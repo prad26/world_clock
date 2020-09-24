@@ -18,7 +18,7 @@ class WorldTime {
       Map data = jsonDecode(response.body);
       // get properties from json
       String datetime = data['datetime'];
-      String hourOffset = data['utc_offset'].substring(1, 3);
+      String hourOffset = data['utc_offset'].substring(0, 3);
       String minuteOffset = data['utc_offset'].substring(4, 6);
 
       //print(datetime);

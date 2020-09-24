@@ -17,13 +17,15 @@ class WorldTime {
       Map data = jsonDecode(response.body);
       // get properties from json
       String datetime = data['datetime'];
-      String offset = data['utc_offset'].substring(1, 3);
+      String hourOffset = data['utc_offset'].substring(1, 3);
+      String minuteOffset = data['utc_offset'].substring(4, 6);
+
       //print(datetime);
       //print(offset);
 
       // create DateTime object
       DateTime now = DateTime.parse(datetime);
-      now = now.add(Duration(hours: int.parse(offset)));
+      now = now.add(Duration(hours: int.parse(hourOffset), minutes: int.parse(minuteOffset)));
 
       // set time property
       time = DateFormat.jm().format(now);
